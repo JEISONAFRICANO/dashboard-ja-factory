@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>J&A Factory Dashboard</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <!-- LOGO -->
+        <div class="logo">
+
+            <img src="Logo empresa.png"
+                 alt="J&A Factory">
+
+        </div>
+
+        <h2>J&A Factory</h2>
+
+        <nav>
+
+            <ul>
+
+                <li>
+                    <a href="#"
+                       onclick="mostrarSeccion('inicio')">
+                        Inicio
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#"
+                       onclick="mostrarSeccion('inventario')">
+                        Inventario
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#"
+                       onclick="mostrarSeccion('ventas')">
+                        Ventas
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#"
+                       onclick="mostrarSeccion('usuarios')">
+                        Usuarios
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#"
+                       onclick="mostrarSeccion('reportes')">
+                        Reportes
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </aside>
+
+    <!-- HEADER -->
+    <header class="header">
+
+        <h1>Panel Administrativo</h1>
+
+        <div class="user">
+
+            <img src="usuario.png"
+                 alt="Administrador">
+
+            <span>Administrador</span>
+
+        </div>
+
+    </header>
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <!-- INICIO -->
+        <section id="inicio" class="contenido">
+
+            <!-- CARDS -->
+            <section class="cards">
+
+                <div class="card">
+                    <h3>Ventas Totales</h3>
+                    <p id="totalVentas">$0</p>
+                </div>
+
+                <div class="card">
+                    <h3>Clientes</h3>
+                    <p id="totalClientes">0</p>
+                </div>
+
+                <div class="card">
+                    <h3>Pedidos</h3>
+                    <p id="totalPedidos">0</p>
+                </div>
+
+            </section>
+
+            <!-- FORMULARIO -->
+            <section class="table-section">
+
+                <h2>Registrar Venta</h2>
+
+                <div class="formulario">
+
+                    <input type="text"
+                           id="cliente"
+                           placeholder="Nombre del cliente">
+
+                    <input type="text"
+                           id="vendedor"
+                           placeholder="Nombre del vendedor">
+
+                    <input type="text"
+                           id="producto"
+                           placeholder="Producto">
+
+                    <input type="number"
+                           id="valor"
+                           placeholder="Valor venta">
+
+                    <button onclick="registrarVenta()">
+
+                        Registrar Venta
+
+                    </button>
+
+                </div>
+
+            </section>
+
+            <!-- TABLA -->
+            <section class="table-section">
+
+                <h2>Ventas Registradas</h2>
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>ID</th>
+                            <th>Cliente</th>
+                            <th>Vendedor</th>
+                            <th>Producto</th>
+                            <th>Valor</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="tablaVentas">
+
+                    </tbody>
+
+                </table>
+
+            </section>
+
+        </section>
+
+        <!-- INVENTARIO -->
+        <section id="inventario"
+                 class="contenido oculto">
+
+            <div class="table-section">
+
+                <h2>Inventario</h2>
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>Producto</th>
+                            <th>Stock</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>Tela Drill</td>
+                            <td>120</td>
+                        </tr>
+
+                        <tr>
+                            <td>Chaquetas</td>
+                            <td>45</td>
+                        </tr>
+
+                        <tr>
+                            <td>Pantalón Cargo</td>
+                            <td>30</td>
+                        </tr>
+
+                        <tr>
+                            <td>Camisas</td>
+                            <td>70</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+        <!-- VENTAS -->
+        <section id="ventas"
+                 class="contenido oculto">
+
+            <div class="table-section">
+
+                <h2>Reporte de Ventas</h2>
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>ID</th>
+                            <th>Cliente</th>
+                            <th>Vendedor</th>
+                            <th>Producto</th>
+                            <th>Valor</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="reporteVentas">
+
+                    </tbody>
+
+                </table>
+
+                <button class="btn-imprimir"
+                        onclick="imprimirReporte()">
+
+                    Imprimir Reporte
+
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- USUARIOS -->
+        <section id="usuarios"
+                 class="contenido oculto">
+
+            <div class="table-section">
+
+                <h2>Usuarios del Sistema</h2>
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Rol</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>Pedro Arturo</td>
+                            <td>Administrador</td>
+                        </tr>
+
+                        <tr>
+                            <td>Laura Gómez</td>
+                            <td>Vendedora</td>
+                        </tr>
+
+                        <tr>
+                            <td>Juan Pérez</td>
+                            <td>Cliente</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+        <!-- REPORTES -->
+        <section id="reportes"
+                 class="contenido oculto">
+
+            <div class="table-section">
+
+                <h2>Reportes Generales</h2>
+
+                <p>
+                    Aquí podrás generar reportes
+                    administrativos y financieros.
+                </p>
+
+                <br>
+
+                <ul>
+
+                    <li>✔ Reporte de ventas</li>
+                    <li>✔ Reporte de inventario</li>
+                    <li>✔ Reporte de clientes</li>
+                    <li>✔ Reporte mensual</li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+
+        <p>© J&A Factory 2026</p>
+
+    </footer>
+
+</div>
+
+<!-- JAVASCRIPT -->
+<script>
+
+let contador = 1;
+let totalVentas = 0;
+let totalClientes = 0;
+let totalPedidos = 0;
+
+let ventas = [];
+
+/* MOSTRAR SECCIONES */
+
+function mostrarSeccion(id){
+
+    const secciones =
+        document.querySelectorAll('.contenido');
+
+    secciones.forEach(sec => {
+
+        sec.classList.add('oculto');
+
+    });
+
+    document.getElementById(id)
+        .classList.remove('oculto');
+}
+
+/* REGISTRAR VENTA */
+
+function registrarVenta(){
+
+    let cliente =
+        document.getElementById('cliente').value;
+
+    let vendedor =
+        document.getElementById('vendedor').value;
+
+    let producto =
+        document.getElementById('producto').value;
+
+    let valor =
+        document.getElementById('valor').value;
+
+    if(cliente === "" ||
+       vendedor === "" ||
+       producto === "" ||
+       valor === ""){
+
+        alert("Complete todos los campos");
+
+        return;
+    }
+
+    let venta = {
+
+        id:contador,
+        cliente:cliente,
+        vendedor:vendedor,
+        producto:producto,
+        valor:valor
+    };
+
+    ventas.push(venta);
+
+    /* TABLA PRINCIPAL */
+
+    const tabla =
+        document.getElementById('tablaVentas');
+
+    tabla.innerHTML += `
+
+        <tr>
+
+            <td>#${contador}</td>
+
+            <td>${cliente}</td>
+
+            <td>${vendedor}</td>
+
+            <td>${producto}</td>
+
+            <td>$${valor}</td>
+
+        </tr>
+
+    `;
+
+    /* ACTUALIZAR REPORTE */
+
+    actualizarReporte();
+
+    contador++;
+
+    totalVentas += parseInt(valor);
+
+    totalClientes++;
+
+    totalPedidos++;
+
+    document.getElementById('totalVentas')
+        .innerText = "$" + totalVentas;
+
+    document.getElementById('totalClientes')
+        .innerText = totalClientes;
+
+    document.getElementById('totalPedidos')
+        .innerText = totalPedidos;
+
+    /* LIMPIAR */
+
+    document.getElementById('cliente').value = "";
+
+    document.getElementById('vendedor').value = "";
+
+    document.getElementById('producto').value = "";
+
+    document.getElementById('valor').value = "";
+}
+
+/* ACTUALIZAR REPORTE */
+
+function actualizarReporte(){
+
+    const reporte =
+        document.getElementById('reporteVentas');
+
+    reporte.innerHTML = "";
+
+    ventas.forEach(v => {
+
+        reporte.innerHTML += `
+
+            <tr>
+
+                <td>#${v.id}</td>
+
+                <td>${v.cliente}</td>
+
+                <td>${v.vendedor}</td>
+
+                <td>${v.producto}</td>
+
+                <td>$${v.valor}</td>
+
+            </tr>
+
+        `;
+    });
+}
+
+/* IMPRIMIR */
+
+function imprimirReporte(){
+
+    window.print();
+}
+
+</script>
+
+</body>
+</html>
