@@ -71,3 +71,9 @@ Incluye función:
 
 ```javascript
 window.print()
+
+
+## AUTOR
+JEISON AFRICANO MARTINEZ
+ESTUDIANTE INGENIERIA DE SOTFWARE
+CURSO DISEÑO WEB
