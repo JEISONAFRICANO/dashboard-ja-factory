@@ -10,64 +10,145 @@
 
     <title>J&A Factory Dashboard</title>
 
-    <link rel="stylesheet" href="styles.css">
+    <!-- CSS -->
+    <link rel="stylesheet"
+          href="./styles.css">
 
 </head>
 
 <body>
 
-<div class="container">
+<!-- ================= LOGIN ================= -->
 
-    <!-- SIDEBAR -->
+<div class="login-container"
+     id="loginContainer">
+
+    <div class="login-box">
+
+        <!-- LOGO -->
+        <img src="./Logo empresa.png"
+             alt="J&A Factory">
+
+        <h2>Iniciar Sesión</h2>
+
+        <!-- USUARIO -->
+        <input type="text"
+               id="usuario"
+               placeholder="Usuario">
+
+        <!-- PASSWORD -->
+        <input type="password"
+               id="password"
+               placeholder="Contraseña">
+
+        <!-- BOTON -->
+        <button onclick="login()">
+
+            Entrar
+
+        </button>
+
+        <!-- ERROR -->
+        <p id="mensajeError"></p>
+
+    </div>
+
+</div>
+
+<!-- ================= DASHBOARD ================= -->
+
+<div class="container oculto"
+     id="dashboard">
+
+    <!-- ================= SIDEBAR ================= -->
+
     <aside class="sidebar">
 
         <!-- LOGO -->
         <div class="logo">
 
-            <img src="Logo empresa.png"
-                 alt="J&A Factory">
+            <img src="./Logo empresa.png"
+                 alt="Logo">
 
         </div>
 
         <h2>J&A Factory</h2>
 
+        <!-- MENU -->
         <nav>
 
             <ul>
 
+                <!-- INICIO -->
                 <li>
+
                     <a href="#"
                        onclick="mostrarSeccion('inicio')">
+
                         Inicio
+
                     </a>
+
                 </li>
 
-                <li>
+                <!-- INVENTARIO -->
+                <li id="inventarioBtn">
+
                     <a href="#"
                        onclick="mostrarSeccion('inventario')">
+
                         Inventario
+
                     </a>
+
                 </li>
 
+                <!-- VENTAS -->
                 <li>
+
                     <a href="#"
                        onclick="mostrarSeccion('ventas')">
+
                         Ventas
+
                     </a>
+
                 </li>
 
-                <li>
+                <!-- USUARIOS -->
+                <li id="usuariosBtn">
+
                     <a href="#"
                        onclick="mostrarSeccion('usuarios')">
+
                         Usuarios
+
                     </a>
+
                 </li>
 
-                <li>
+                <!-- REPORTES -->
+                <li id="reportesBtn">
+
                     <a href="#"
                        onclick="mostrarSeccion('reportes')">
+
                         Reportes
+
                     </a>
+
+                </li>
+
+                <!-- CERRAR -->
+                <li>
+
+                    <a href="#"
+                       onclick="cerrarSesion()">
+
+                        Cerrar Sesión
+
+                    </a>
+
                 </li>
 
             </ul>
@@ -76,71 +157,138 @@
 
     </aside>
 
-    <!-- HEADER -->
+    <!-- ================= HEADER ================= -->
+
     <header class="header">
 
         <h1>Panel Administrativo</h1>
 
+        <!-- USER -->
         <div class="user">
 
-            <img src="usuario.png"
-                 alt="Administrador">
+            <img src="./usuario.png"
+                 alt="Usuario">
 
-            <span>Administrador</span>
+            <span id="nombreUsuario">
+
+                Usuario
+
+            </span>
 
         </div>
 
     </header>
 
-    <!-- MAIN -->
+    <!-- ================= MAIN ================= -->
+
     <main class="main">
 
-        <!-- INICIO -->
-        <section id="inicio" class="contenido">
+        <!-- ================= INICIO ================= -->
+
+        <section id="inicio"
+                 class="contenido">
 
             <!-- CARDS -->
             <section class="cards">
 
                 <div class="card">
+
                     <h3>Ventas Totales</h3>
-                    <p id="totalVentas">$0</p>
+
+                    <p id="totalVentas">
+
+                        $0
+
+                    </p>
+
                 </div>
 
                 <div class="card">
+
                     <h3>Clientes</h3>
-                    <p id="totalClientes">0</p>
+
+                    <p id="totalClientes">
+
+                        0
+
+                    </p>
+
                 </div>
 
                 <div class="card">
+
                     <h3>Pedidos</h3>
-                    <p id="totalPedidos">0</p>
+
+                    <p id="totalPedidos">
+
+                        0
+
+                    </p>
+
                 </div>
 
             </section>
 
-            <!-- FORMULARIO -->
+            <!-- ================= FORMULARIO VENTAS ================= -->
+
             <section class="table-section">
 
                 <h2>Registrar Venta</h2>
 
                 <div class="formulario">
 
+                    <!-- CLIENTE -->
                     <input type="text"
                            id="cliente"
-                           placeholder="Nombre del cliente">
+                           placeholder="Cliente">
 
+                    <!-- VENDEDOR -->
                     <input type="text"
                            id="vendedor"
-                           placeholder="Nombre del vendedor">
+                           placeholder="Vendedor">
 
+                    <!-- SKU -->
                     <input type="text"
-                           id="producto"
-                           placeholder="Producto">
+                           id="skuVenta"
+                           placeholder="SKU">
 
+                    <!-- GENERO -->
+                    <select id="generoVenta">
+
+                        <option value="">
+                            Género
+                        </option>
+
+                        <option value="Hombre">
+                            Hombre
+                        </option>
+
+                        <option value="Mujer">
+                            Mujer
+                        </option>
+
+                        <option value="Unisex">
+                            Unisex
+                        </option>
+
+                    </select>
+
+                    <!-- TALLA -->
+                    <input type="text"
+                           id="tallaVenta"
+                           placeholder="Talla">
+
+                    <!-- COLOR -->
+                    <input type="text"
+                           id="colorVenta"
+                           placeholder="Color">
+
+                    <!-- CANTIDAD -->
                     <input type="number"
-                           id="valor"
-                           placeholder="Valor venta">
+                           id="cantidadVenta"
+                           placeholder="Cantidad">
 
+                    <!-- BOTON -->
                     <button onclick="registrarVenta()">
 
                         Registrar Venta
@@ -151,7 +299,8 @@
 
             </section>
 
-            <!-- TABLA -->
+            <!-- ================= TABLA VENTAS ================= -->
+
             <section class="table-section">
 
                 <h2>Ventas Registradas</h2>
@@ -161,11 +310,18 @@
                     <thead>
 
                         <tr>
+
                             <th>ID</th>
                             <th>Cliente</th>
                             <th>Vendedor</th>
+                            <th>SKU</th>
                             <th>Producto</th>
-                            <th>Valor</th>
+                            <th>Género</th>
+                            <th>Talla</th>
+                            <th>Color</th>
+                            <th>Cantidad</th>
+                            <th>Total</th>
+
                         </tr>
 
                     </thead>
@@ -180,56 +336,135 @@
 
         </section>
 
-        <!-- INVENTARIO -->
+        <!-- ================= INVENTARIO ================= -->
+
         <section id="inventario"
                  class="contenido oculto">
 
-            <div class="table-section">
+            <!-- FORMULARIO INVENTARIO -->
+            <section class="table-section">
 
-                <h2>Inventario</h2>
+                <h2>Registro de Inventario</h2>
+
+                <div class="formulario">
+
+                    <!-- SKU -->
+                    <input type="text"
+                           id="sku"
+                           placeholder="SKU">
+
+                    <!-- PRENDA -->
+                    <input type="text"
+                           id="prenda"
+                           placeholder="Prenda">
+
+                    <!-- GENERO -->
+                    <select id="genero">
+
+                        <option value="">
+                            Género
+                        </option>
+
+                        <option value="Hombre">
+                            Hombre
+                        </option>
+
+                        <option value="Mujer">
+                            Mujer
+                        </option>
+
+                        <option value="Unisex">
+                            Unisex
+                        </option>
+
+                    </select>
+
+                    <!-- DESCRIPCION -->
+                    <input type="text"
+                           id="descripcion"
+                           placeholder="Descripción">
+
+                    <!-- TALLA -->
+                    <input type="text"
+                           id="talla"
+                           placeholder="Talla">
+
+                    <!-- COLOR -->
+                    <input type="text"
+                           id="color"
+                           placeholder="Color">
+
+                    <!-- PRECIO COMPRA -->
+                    <input type="number"
+                           id="precioCompra"
+                           placeholder="Precio Compra">
+
+                    <!-- PRECIO VENTA -->
+                    <input type="number"
+                           id="precioVenta"
+                           placeholder="Precio Venta">
+
+                    <!-- STOCK -->
+                    <input type="number"
+                           id="stock"
+                           placeholder="Stock">
+
+                    <!-- PROPIETARIO -->
+                    <input type="text"
+                           id="propietario"
+                           placeholder="Prenda a nombre de">
+
+                    <!-- BOTON -->
+                    <button onclick="registrarProducto()">
+
+                        Registrar Producto
+
+                    </button>
+
+                </div>
+
+            </section>
+
+            <!-- ================= TABLA INVENTARIO ================= -->
+
+            <section class="table-section">
+
+                <h2>Productos Registrados</h2>
 
                 <table>
 
                     <thead>
 
                         <tr>
-                            <th>Producto</th>
+
+                            <th>SKU</th>
+                            <th>Prenda</th>
+                            <th>Género</th>
+                            <th>Descripción</th>
+                            <th>Talla</th>
+                            <th>Color</th>
+                            <th>Compra</th>
+                            <th>Venta</th>
+                            <th>Utilidad</th>
                             <th>Stock</th>
+                            <th>Propietario</th>
+
                         </tr>
 
                     </thead>
 
-                    <tbody>
-
-                        <tr>
-                            <td>Tela Drill</td>
-                            <td>120</td>
-                        </tr>
-
-                        <tr>
-                            <td>Chaquetas</td>
-                            <td>45</td>
-                        </tr>
-
-                        <tr>
-                            <td>Pantalón Cargo</td>
-                            <td>30</td>
-                        </tr>
-
-                        <tr>
-                            <td>Camisas</td>
-                            <td>70</td>
-                        </tr>
+                    <tbody id="tablaInventario">
 
                     </tbody>
 
                 </table>
 
-            </div>
+            </section>
 
         </section>
 
-        <!-- VENTAS -->
+        <!-- ================= VENTAS ================= -->
+
         <section id="ventas"
                  class="contenido oculto">
 
@@ -242,11 +477,18 @@
                     <thead>
 
                         <tr>
+
                             <th>ID</th>
                             <th>Cliente</th>
                             <th>Vendedor</th>
+                            <th>SKU</th>
                             <th>Producto</th>
-                            <th>Valor</th>
+                            <th>Género</th>
+                            <th>Talla</th>
+                            <th>Color</th>
+                            <th>Cantidad</th>
+                            <th>Total</th>
+
                         </tr>
 
                     </thead>
@@ -257,18 +499,12 @@
 
                 </table>
 
-                <button class="btn-imprimir"
-                        onclick="imprimirReporte()">
-
-                    Imprimir Reporte
-
-                </button>
-
             </div>
 
         </section>
 
-        <!-- USUARIOS -->
+        <!-- ================= USUARIOS ================= -->
+
         <section id="usuarios"
                  class="contenido oculto">
 
@@ -281,8 +517,10 @@
                     <thead>
 
                         <tr>
-                            <th>Nombre</th>
+
+                            <th>Usuario</th>
                             <th>Rol</th>
+
                         </tr>
 
                     </thead>
@@ -290,18 +528,17 @@
                     <tbody>
 
                         <tr>
-                            <td>Pedro Arturo</td>
+
+                            <td>admin</td>
                             <td>Administrador</td>
+
                         </tr>
 
                         <tr>
-                            <td>Laura Gómez</td>
-                            <td>Vendedora</td>
-                        </tr>
 
-                        <tr>
-                            <td>Juan Pérez</td>
-                            <td>Cliente</td>
+                            <td>vendedor</td>
+                            <td>Vendedor</td>
+
                         </tr>
 
                     </tbody>
@@ -312,7 +549,8 @@
 
         </section>
 
-        <!-- REPORTES -->
+        <!-- ================= REPORTES ================= -->
+
         <section id="reportes"
                  class="contenido oculto">
 
@@ -320,18 +558,10 @@
 
                 <h2>Reportes Generales</h2>
 
-                <p>
-                    Aquí podrás generar reportes
-                    administrativos y financieros.
-                </p>
-
-                <br>
-
                 <ul>
 
                     <li>✔ Reporte de ventas</li>
                     <li>✔ Reporte de inventario</li>
-                    <li>✔ Reporte de clientes</li>
                     <li>✔ Reporte mensual</li>
 
                 </ul>
@@ -342,83 +572,465 @@
 
     </main>
 
-    <!-- FOOTER -->
+    <!-- ================= FOOTER ================= -->
+
     <footer class="footer">
 
-        <p>© J&A Factory 2026</p>
+        <p>
+
+            © J&A Factory 2026
+
+        </p>
 
     </footer>
 
 </div>
 
-<!-- JAVASCRIPT -->
+<!-- ================= JAVASCRIPT ================= -->
+
 <script>
 
+/* ================= LOGIN ================= */
+
+function login(){
+
+    let usuario =
+        document.getElementById(
+            "usuario"
+        ).value;
+
+    let password =
+        document.getElementById(
+            "password"
+        ).value;
+
+    /* ADMIN */
+
+    if(
+        usuario === "admin" &&
+        password === "admin2026"
+    ){
+
+        iniciarDashboard(
+            "Administrador"
+        );
+
+        activarAdministrador();
+    }
+
+    /* VENDEDOR */
+
+    else if(
+        usuario === "vendedor" &&
+        password === "venta2026"
+    ){
+
+        iniciarDashboard(
+            "Vendedor"
+        );
+
+        activarVendedor();
+    }
+
+    else{
+
+        document.getElementById(
+            "mensajeError"
+        ).innerText =
+        "Usuario o contraseña incorrectos";
+    }
+}
+
+/* ================= DASHBOARD ================= */
+
+function iniciarDashboard(nombre){
+
+    document.getElementById(
+        "loginContainer"
+    ).style.display = "none";
+
+    document.getElementById(
+        "dashboard"
+    ).classList.remove(
+        "oculto"
+    );
+
+    document.getElementById(
+        "nombreUsuario"
+    ).innerText = nombre;
+}
+
+/* ================= ADMIN ================= */
+
+function activarAdministrador(){
+
+    document.getElementById(
+        "inventarioBtn"
+    ).style.display = "block";
+
+    document.getElementById(
+        "usuariosBtn"
+    ).style.display = "block";
+
+    document.getElementById(
+        "reportesBtn"
+    ).style.display = "block";
+}
+
+/* ================= VENDEDOR ================= */
+
+function activarVendedor(){
+
+    document.getElementById(
+        "inventarioBtn"
+    ).style.display = "none";
+
+    document.getElementById(
+        "usuariosBtn"
+    ).style.display = "none";
+
+    document.getElementById(
+        "reportesBtn"
+    ).style.display = "none";
+}
+
+/* ================= CERRAR ================= */
+
+function cerrarSesion(){
+
+    location.reload();
+}
+
+/* ================= VARIABLES ================= */
+
+let inventario = [];
+let ventas = [];
 let contador = 1;
+
 let totalVentas = 0;
 let totalClientes = 0;
 let totalPedidos = 0;
 
-let ventas = [];
-
-/* MOSTRAR SECCIONES */
+/* ================= SECCIONES ================= */
 
 function mostrarSeccion(id){
 
     const secciones =
-        document.querySelectorAll('.contenido');
+        document.querySelectorAll(
+            ".contenido"
+        );
 
     secciones.forEach(sec => {
 
-        sec.classList.add('oculto');
+        sec.classList.add(
+            "oculto"
+        );
 
     });
 
     document.getElementById(id)
-        .classList.remove('oculto');
+        .classList.remove(
+            "oculto"
+        );
 }
 
-/* REGISTRAR VENTA */
+/* ================= REGISTRAR PRODUCTO ================= */
+
+function registrarProducto(){
+
+    let sku =
+        document.getElementById(
+            "sku"
+        ).value;
+
+    let prenda =
+        document.getElementById(
+            "prenda"
+        ).value;
+
+    let genero =
+        document.getElementById(
+            "genero"
+        ).value;
+
+    let descripcion =
+        document.getElementById(
+            "descripcion"
+        ).value;
+
+    let talla =
+        document.getElementById(
+            "talla"
+        ).value;
+
+    let color =
+        document.getElementById(
+            "color"
+        ).value;
+
+    let compra =
+        parseInt(
+            document.getElementById(
+                "precioCompra"
+            ).value
+        );
+
+    let venta =
+        parseInt(
+            document.getElementById(
+                "precioVenta"
+            ).value
+        );
+
+    let stock =
+        parseInt(
+            document.getElementById(
+                "stock"
+            ).value
+        );
+
+    let propietario =
+        document.getElementById(
+            "propietario"
+        ).value;
+
+    /* VALIDAR */
+
+    if(
+        sku === "" ||
+        prenda === "" ||
+        genero === "" ||
+        descripcion === "" ||
+        talla === "" ||
+        color === "" ||
+        isNaN(compra) ||
+        isNaN(venta) ||
+        isNaN(stock) ||
+        propietario === ""
+    ){
+
+        alert(
+            "Complete todos los campos"
+        );
+
+        return;
+    }
+
+    /* UTILIDAD */
+
+    let utilidad =
+        venta - compra;
+
+    /* PRODUCTO */
+
+    let producto = {
+
+        sku,
+        prenda,
+        genero,
+        descripcion,
+        talla,
+        color,
+        compra,
+        venta,
+        utilidad,
+        stock,
+        propietario
+    };
+
+    inventario.push(producto);
+
+    actualizarTablaInventario();
+
+    /* LIMPIAR */
+
+    document.getElementById("sku").value = "";
+    document.getElementById("prenda").value = "";
+    document.getElementById("genero").value = "";
+    document.getElementById("descripcion").value = "";
+    document.getElementById("talla").value = "";
+    document.getElementById("color").value = "";
+    document.getElementById("precioCompra").value = "";
+    document.getElementById("precioVenta").value = "";
+    document.getElementById("stock").value = "";
+    document.getElementById("propietario").value = "";
+}
+
+/* ================= ACTUALIZAR INVENTARIO ================= */
+
+function actualizarTablaInventario(){
+
+    const tabla =
+        document.getElementById(
+            "tablaInventario"
+        );
+
+    tabla.innerHTML = "";
+
+    inventario.forEach(p => {
+
+        tabla.innerHTML += `
+
+            <tr>
+
+                <td>${p.sku}</td>
+
+                <td>${p.prenda}</td>
+
+                <td>${p.genero}</td>
+
+                <td>${p.descripcion}</td>
+
+                <td>${p.talla}</td>
+
+                <td>${p.color}</td>
+
+                <td>$${p.compra}</td>
+
+                <td>$${p.venta}</td>
+
+                <td>$${p.utilidad}</td>
+
+                <td>${p.stock}</td>
+
+                <td>${p.propietario}</td>
+
+            </tr>
+
+        `;
+    });
+}
+
+/* ================= REGISTRAR VENTA ================= */
 
 function registrarVenta(){
 
     let cliente =
-        document.getElementById('cliente').value;
+        document.getElementById(
+            "cliente"
+        ).value;
 
     let vendedor =
-        document.getElementById('vendedor').value;
+        document.getElementById(
+            "vendedor"
+        ).value;
 
-    let producto =
-        document.getElementById('producto').value;
+    let skuVenta =
+        document.getElementById(
+            "skuVenta"
+        ).value;
 
-    let valor =
-        document.getElementById('valor').value;
+    let generoVenta =
+        document.getElementById(
+            "generoVenta"
+        ).value;
 
-    if(cliente === "" ||
-       vendedor === "" ||
-       producto === "" ||
-       valor === ""){
+    let tallaVenta =
+        document.getElementById(
+            "tallaVenta"
+        ).value;
 
-        alert("Complete todos los campos");
+    let colorVenta =
+        document.getElementById(
+            "colorVenta"
+        ).value;
+
+    let cantidad =
+        parseInt(
+            document.getElementById(
+                "cantidadVenta"
+            ).value
+        );
+
+    /* VALIDAR */
+
+    if(
+        cliente === "" ||
+        vendedor === "" ||
+        skuVenta === "" ||
+        generoVenta === "" ||
+        tallaVenta === "" ||
+        colorVenta === "" ||
+        isNaN(cantidad)
+    ){
+
+        alert(
+            "Complete todos los campos"
+        );
 
         return;
     }
+
+    /* BUSCAR PRODUCTO */
+
+    let productoEncontrado =
+        inventario.find(p =>
+
+            p.sku === skuVenta &&
+            p.genero === generoVenta &&
+            p.talla === tallaVenta &&
+            p.color === colorVenta
+
+        );
+
+    /* VALIDAR */
+
+    if(!productoEncontrado){
+
+        alert(
+            "Producto no encontrado"
+        );
+
+        return;
+    }
+
+    /* STOCK */
+
+    if(
+        productoEncontrado.stock < cantidad
+    ){
+
+        alert(
+            "Stock insuficiente"
+        );
+
+        return;
+    }
+
+    /* TOTAL */
+
+    let total =
+        productoEncontrado.venta *
+        cantidad;
+
+    /* DESCONTAR STOCK */
+
+    productoEncontrado.stock -= cantidad;
+
+    /* VENTA */
 
     let venta = {
 
         id:contador,
         cliente:cliente,
         vendedor:vendedor,
-        producto:producto,
-        valor:valor
+        sku:productoEncontrado.sku,
+        producto:productoEncontrado.prenda,
+        genero:productoEncontrado.genero,
+        talla:productoEncontrado.talla,
+        color:productoEncontrado.color,
+        cantidad:cantidad,
+        valor:total
     };
 
     ventas.push(venta);
 
-    /* TABLA PRINCIPAL */
+    /* TABLA */
 
     const tabla =
-        document.getElementById('tablaVentas');
+        document.getElementById(
+            "tablaVentas"
+        );
 
     tabla.innerHTML += `
 
@@ -430,52 +1042,68 @@ function registrarVenta(){
 
             <td>${vendedor}</td>
 
-            <td>${producto}</td>
+            <td>${productoEncontrado.sku}</td>
 
-            <td>$${valor}</td>
+            <td>${productoEncontrado.prenda}</td>
+
+            <td>${productoEncontrado.genero}</td>
+
+            <td>${productoEncontrado.talla}</td>
+
+            <td>${productoEncontrado.color}</td>
+
+            <td>${cantidad}</td>
+
+            <td>$${total}</td>
 
         </tr>
 
     `;
 
-    /* ACTUALIZAR REPORTE */
-
     actualizarReporte();
+
+    actualizarTablaInventario();
 
     contador++;
 
-    totalVentas += parseInt(valor);
-
+    totalVentas += total;
     totalClientes++;
-
     totalPedidos++;
 
-    document.getElementById('totalVentas')
-        .innerText = "$" + totalVentas;
+    document.getElementById(
+        "totalVentas"
+    ).innerText =
+    "$" + totalVentas;
 
-    document.getElementById('totalClientes')
-        .innerText = totalClientes;
+    document.getElementById(
+        "totalClientes"
+    ).innerText =
+    totalClientes;
 
-    document.getElementById('totalPedidos')
-        .innerText = totalPedidos;
+    document.getElementById(
+        "totalPedidos"
+    ).innerText =
+    totalPedidos;
 
     /* LIMPIAR */
 
-    document.getElementById('cliente').value = "";
-
-    document.getElementById('vendedor').value = "";
-
-    document.getElementById('producto').value = "";
-
-    document.getElementById('valor').value = "";
+    document.getElementById("cliente").value = "";
+    document.getElementById("vendedor").value = "";
+    document.getElementById("skuVenta").value = "";
+    document.getElementById("generoVenta").value = "";
+    document.getElementById("tallaVenta").value = "";
+    document.getElementById("colorVenta").value = "";
+    document.getElementById("cantidadVenta").value = "";
 }
 
-/* ACTUALIZAR REPORTE */
+/* ================= REPORTE ================= */
 
 function actualizarReporte(){
 
     const reporte =
-        document.getElementById('reporteVentas');
+        document.getElementById(
+            "reporteVentas"
+        );
 
     reporte.innerHTML = "";
 
@@ -491,7 +1119,17 @@ function actualizarReporte(){
 
                 <td>${v.vendedor}</td>
 
+                <td>${v.sku}</td>
+
                 <td>${v.producto}</td>
+
+                <td>${v.genero}</td>
+
+                <td>${v.talla}</td>
+
+                <td>${v.color}</td>
+
+                <td>${v.cantidad}</td>
 
                 <td>$${v.valor}</td>
 
@@ -501,14 +1139,10 @@ function actualizarReporte(){
     });
 }
 
-/* IMPRIMIR */
-
-function imprimirReporte(){
-
-    window.print();
-}
-
 </script>
+
+</body>
+</html>
 
 </body>
 </html>
